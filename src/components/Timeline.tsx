@@ -86,7 +86,7 @@ export function Timeline({ records }: { records: MedicalRecord[] }) {
                           {lang === "hi" ? meta.hi : meta.en}
                         </span>
                         {r.verified && (
-                          <BadgeCheck className="ml-auto h-4 w-4 text-success" title={t("verified")} />
+                          <BadgeCheck aria-label={t("verified")} className="ml-auto h-4 w-4 text-success" />
                         )}
                       </div>
                       <div className="mt-2 font-semibold leading-snug">{r.title}</div>

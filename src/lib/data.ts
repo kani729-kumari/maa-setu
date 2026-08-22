@@ -79,8 +79,12 @@ export async function fetchRecords(patientId: string) {
   return (data ?? []) as MedicalRecord[];
 }
 
+/* Generic helper for the prototype's patient-scoped lookup tables. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const anyDb = supabase as any;
+
 export async function fetchTable<T>(table: string, patientId: string, orderBy?: string) {
-  let q = supabase.from(table).select("*").eq("patient_id", patientId);
+  let q = anyDb.from(table).select("*").eq("patient_id", patientId);
   if (orderBy) q = q.order(orderBy, { ascending: true });
   const { data, error } = await q;
   if (error) throw error;
