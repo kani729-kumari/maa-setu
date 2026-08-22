@@ -94,10 +94,12 @@ export function assessRisk(
   const bpRecord = sorted.find((r) => typeof r.vitals?.["bp"] === "string");
   const bpString = bpRecord?.vitals?.["bp"] as string | undefined;
   if (bpString) {
-    const [sys, dia] = bpString.split("/").map((n) => Number(n.trim()));
+    const parts = bpString.split("/").map((n) => Number(n.trim()));
+    const sys = parts[0] ?? 0;
+    const dia = parts[1] ?? 0;
     if (sys >= 140 || dia >= 90) add(`Elevated blood pressure (${bpString})`, 25);
     else if (sys >= 130 || dia >= 85) add(`Borderline blood pressure (${bpString})`, 12);
-    else if (sys < 90) add(`Low blood pressure (${bpString})`, 10);
+    else if (sys > 0 && sys < 90) add(`Low blood pressure (${bpString})`, 10);
   } else {
     add("No blood pressure reading recorded", 8);
   }
