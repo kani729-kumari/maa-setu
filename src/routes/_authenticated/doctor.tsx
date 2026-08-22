@@ -240,7 +240,7 @@ function AddRecordForm({ patientId, providerName }: { patientId: string; provide
         pregnancy_week: week ? Number(week) : null,
         pregnancy_month: week ? Math.ceil(Number(week) / 4.34) : null,
         provider_name: providerName,
-        vitals,
+        vitals: vitals as never,
         notes: notes || null,
         verified: true,
       });

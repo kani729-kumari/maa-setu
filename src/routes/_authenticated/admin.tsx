@@ -83,7 +83,7 @@ function AdminDashboard() {
   const highRisk = riskByPatient.filter((r) => r.risk.level === "high").length;
   const active = patients.filter((p) => p.status === "active").length;
   const ancDone = records.filter((r) => r.record_type === "checkup").length;
-  const missed = (d?.appointments ?? []).filter((a) => a.status === "missed").length;
+  const missed = (d?.appointments ?? []).filter((a) => a["status"] === "missed").length;
 
   const nav = (
     <Button asChild variant="ghost" size="sm">
