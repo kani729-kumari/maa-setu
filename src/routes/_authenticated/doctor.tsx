@@ -5,6 +5,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 import { AppShell, DemoBadge, SectionCard, StatTile } from "@/components/brand";
+import { DocumentVault } from "@/components/DocumentVault";
 import { MhidCard } from "@/components/MhidCard";
 import { RiskPanel } from "@/components/RiskPanel";
 import { Timeline } from "@/components/Timeline";
@@ -192,6 +193,7 @@ function DoctorDashboard() {
                     <Timeline records={recordsQ.data ?? []} />
                   </SectionCard>
                   <AddRecordForm patientId={patient.id} providerName={profile?.full_name ?? "Provider"} />
+                  <DocumentVault patientId={patient.id} uploaderName={profile?.full_name ?? "Provider"} />
                 </>
               )}
             </>
