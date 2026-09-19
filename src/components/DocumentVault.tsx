@@ -42,6 +42,7 @@ export function DocumentVault({
   const qc = useQueryClient();
   const fileRef = useRef<HTMLInputElement>(null);
   const [category, setCategory] = useState("ultrasound");
+  const [openOcr, setOpenOcr] = useState<string | null>(null);
 
   const docsQ = useQuery({
     queryKey: ["documents", patientId],
