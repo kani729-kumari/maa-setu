@@ -162,21 +162,81 @@ export function DocumentVault({
       )}
 
       <ul className="space-y-2 text-sm">
-        {(docsQ.data ?? []).map((d) => (
-          <li
-            key={d.id}
-            className="flex flex-wrap items-center gap-2 rounded-xl border border-border p-3"
-          >
-            <span className="text-lg">📄</span>
-            <span className="font-semibold">{d.file_name}</span>
-            <span className="rounded-full bg-secondary px-2 py-0.5 text-xs">{d.category}</span>
-            <span className="text-xs text-muted-foreground">{d.uploaded_by ?? ""}</span>
-            <Button size="sm" variant="ghost" className="ml-auto" onClick={() => openDoc(d)}>
-              <Download className="mr-1 h-4 w-4" />
-              {lang === "hi" ? "खोलें" : "Open"}
-            </Button>
-          </li>
-        ))}
+        {(docsQ.data ?? []).map((d) => {
+          const statusStyles: Record<string, string> = {
+            done: "bg-success/15 text-success",
+            processing: "bg-secondary text-secondary-foreground",
+            failed: "bg-destructive/10 text-destructive",
+            pending: "bg-muted text-muted-foreground",
+          };
+          const statusLabel: Record<string, [string, string]> = {
+            done: [lang === "hi" ? "निकाला गया" : "Extracted", "✓"],
+            processing: [lang === "hi" ? "प्रोसेस हो रहा" : "Processing…", "⏳"],
+            failed: [lang === "hi" ? "विफल" : "Failed", "⚠"],
+            pending: [lang === "hi" ? "अन-स्कैन्ड" : "Not scanned", "○"],
+          };
+          const [label, icon] = statusLabel[d.ocr_status] ?? statusLabel.pending!;
+          return (
+            <li key={d.id} className="rounded-xl border border-border p-3">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-lg">📄</span>
+                <span className="font-semibold">{d.file_name}</span>
+                <span className="rounded-full bg-secondary px-2 py-0.5 text-xs">{d.category}</span>
+                <span
+                  className={`rounded-full px-2 py-0.5 text-xs font-medium ${statusStyles[d.ocr_status] ?? statusStyles.pending}`}
+                >
+                  {icon} {label}
+                </span>
+                <span className="text-xs text-muted-foreground">{d.uploaded_by ?? ""}</span>
+                <span className="ml-auto flex items-center gap-1">
+                  {d.file_path && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      disabled={extract.isPending && extract.variables === d.id}
+                      onClick={() => extract.mutate(d.id)}
+                    >
+                      <ScanText className="mr-1 h-4 w-4" />
+                      {extract.isPending && extract.variables === d.id
+                        ? lang === "hi"
+                          ? "पढ़ा जा रहा…"
+                          : "Reading…"
+                        : lang === "hi"
+                          ? "AI से पढ़ें"
+                          : "Extract with AI"}
+                    </Button>
+                  )}
+                  {d.ocr_text && (
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={() => setOpenOcr(openOcr === d.id ? null : d.id)}
+                      aria-label="Toggle extracted text"
+                    >
+                      {openOcr === d.id ? (
+                        <ChevronUp className="h-4 w-4" />
+                      ) : (
+                        <ChevronDown className="h-4 w-4" />
+                      )}
+                    </Button>
+                  )}
+                  <Button size="sm" variant="ghost" onClick={() => openDoc(d)}>
+                    <Download className="mr-1 h-4 w-4" />
+                    {lang === "hi" ? "खोलें" : "Open"}
+                  </Button>
+                </span>
+              </div>
+              {openOcr === d.id && d.ocr_text && (
+                <div className="mt-3 whitespace-pre-wrap rounded-lg border border-border bg-muted/40 p-3 text-xs leading-relaxed">
+                  <div className="mb-1 font-semibold text-primary">
+                    {lang === "hi" ? "AI निष्कर्षण (प्रोटोटाइप)" : "AI extraction (prototype)"}
+                  </div>
+                  {d.ocr_text}
+                </div>
+              )}
+            </li>
+          );
+        })}
         {(docsQ.data ?? []).length === 0 && (
           <li className="text-sm text-muted-foreground">
             {lang === "hi" ? "अभी कोई दस्तावेज़ नहीं" : "No documents yet"}
