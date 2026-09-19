@@ -5,6 +5,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 import { AppShell, DemoBadge, SectionCard, StatTile } from "@/components/brand";
+import { DocumentVault } from "@/components/DocumentVault";
 import { MhidCard } from "@/components/MhidCard";
 import { RiskPanel } from "@/components/RiskPanel";
 import { Timeline } from "@/components/Timeline";
