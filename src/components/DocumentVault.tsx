@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Download, FileText, Upload } from "lucide-react";
+import { ChevronDown, ChevronUp, Download, FileText, ScanText, Upload } from "lucide-react";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 
@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/lib/i18n";
+import { extractDocumentOcr } from "@/lib/ocr.functions";
 
 type DocRow = {
   id: string;
@@ -15,6 +16,7 @@ type DocRow = {
   file_path: string | null;
   category: string;
   ocr_status: string;
+  ocr_text: string | null;
   uploaded_by: string | null;
   created_at: string;
 };
