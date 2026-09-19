@@ -83,6 +83,25 @@ export function DocumentVault({
     onError: (e: Error) => toast.error(e.message),
   });
 
+  const extract = useMutation({
+    mutationFn: async (docId: string) => {
+      const res = await extractDocumentOcr({ data: { documentId: docId } });
+      if (res.status === "failed") throw new Error("Extraction failed — try again");
+      return res;
+    },
+    onSuccess: (res, docId) => {
+      if (res.status === "done") {
+        toast.success(lang === "hi" ? "टेक्स्ट निकाला गया" : "Text extracted");
+        setOpenOcr(docId);
+      }
+      qc.invalidateQueries({ queryKey: ["documents", patientId] });
+    },
+    onError: (e: Error) => {
+      toast.error(e.message);
+      qc.invalidateQueries({ queryKey: ["documents", patientId] });
+    },
+  });
+
   async function openDoc(d: DocRow) {
     if (!d.file_path) {
       toast.info(lang === "hi" ? "डेमो दस्तावेज़ — फ़ाइल संलग्न नहीं" : "Demo document — no file attached");
