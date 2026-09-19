@@ -192,6 +192,7 @@ function DoctorDashboard() {
                     <Timeline records={recordsQ.data ?? []} />
                   </SectionCard>
                   <AddRecordForm patientId={patient.id} providerName={profile?.full_name ?? "Provider"} />
+                  <DocumentVault patientId={patient.id} uploaderName={profile?.full_name ?? "Provider"} />
                 </>
               )}
             </>
