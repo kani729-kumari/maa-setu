@@ -534,26 +534,7 @@ function PatientDashboard() {
         </TabsContent>
 
         <TabsContent value="more" className="mt-5 space-y-5">
-          <SectionCard title={t("documents")}>
-            <ul className="space-y-2 text-sm">
-              {(docsQ.data ?? []).map((d) => (
-                <li
-                  key={String(d["id"])}
-                  className="flex flex-wrap items-center gap-2 rounded-xl border border-border p-3"
-                >
-                  <span className="text-lg">📄</span>
-                  <span className="font-semibold">{String(d["file_name"])}</span>
-                  <span className="rounded-full bg-secondary px-2 py-0.5 text-xs">
-                    {String(d["category"])}
-                  </span>
-                  <span className="ml-auto text-xs text-muted-foreground">
-                    {String(d["uploaded_by"] ?? "")}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-3 text-xs text-muted-foreground">{t("ocrNote")}</p>
-          </SectionCard>
+          <DocumentVault patientId={patient.id} uploaderName={profile?.full_name ?? "Patient"} />
 
           <SectionCard title={t("family")}>
             <ul className="mb-4 space-y-2 text-sm">
