@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BarChart3, Building2, MapPin, ShieldAlert } from "lucide-react";
+import { BarChart3, Building2, ExternalLink, FileWarning, MapPin, ShieldAlert } from "lucide-react";
 
 import { AppShell, DemoBadge, SectionCard, StatTile } from "@/components/brand";
 import { Button } from "@/components/ui/button";
