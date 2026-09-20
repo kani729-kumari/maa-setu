@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { AlertTriangle, PhoneCall } from "lucide-react";
+import { AlertTriangle, ExternalLink, FileWarning, PhoneCall } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -531,6 +531,29 @@ function PatientDashboard() {
                 ? "प्रोटोटाइप डेमो स्थान — बाद में वास्तविक मैप/लोकेशन एपीआई जोड़ा जा सकता है।"
                 : "Prototype demo locations — real map/location APIs can be connected later."}
             </p>
+          </SectionCard>
+          <SectionCard title={t("complaintForms")} icon={<FileWarning className="h-5 w-5 text-primary" />}>
+            <p className="mb-3 text-sm text-muted-foreground">{t("complaintNote")}</p>
+            <div className="grid gap-2 sm:grid-cols-2">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfrMeHW-M0bkjuN--5jU4IiHWlatQCC0Z7KaceMcYVxX3KI9Q/viewform?usp=publish-editor"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-xl border border-border bg-muted/30 px-3 py-3 text-sm font-semibold transition-colors hover:bg-primary/10"
+              >
+                <ExternalLink className="h-4 w-4 shrink-0 text-primary" />
+                {t("govtComplaint")}
+              </a>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdsNGs_Brq_o34r3IUs8FAoyjqtFyuIdEpb-GJ8GJqaaH9eCA/viewform?usp=header"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-xl border border-border bg-muted/30 px-3 py-3 text-sm font-semibold transition-colors hover:bg-primary/10"
+              >
+                <ExternalLink className="h-4 w-4 shrink-0 text-primary" />
+                {t("hospitalComplaint")}
+              </a>
+            </div>
           </SectionCard>
         </TabsContent>
 
