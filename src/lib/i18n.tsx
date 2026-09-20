@@ -147,6 +147,13 @@ const dict: Dict = {
     "If you have severe symptoms, go to the nearest healthcare facility immediately or call for emergency help.",
     "यदि गंभीर लक्षण हैं तो तुरंत नज़दीकी स्वास्थ्य केंद्र जाएँ या आपातकालीन सहायता के लिए कॉल करें।",
   ],
+  complaintForms: ["Complaint Forms", "शिकायत फ़ॉर्म"],
+  govtComplaint: ["Government complaint form", "सरकारी शिकायत फ़ॉर्म"],
+  hospitalComplaint: ["Hospital complaint form", "अस्पताल शिकायत फ़ॉर्म"],
+  complaintNote: [
+    "File an official complaint with the district health office or a partner hospital via Google Forms.",
+    "Google फ़ॉर्म के माध्यम से ज़िला स्वास्थ्य कार्यालय या साझेदार अस्पताल में आधिकारिक शिकायत दर्ज करें।",
+  ],
 };
 
 type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (k: string) => string };

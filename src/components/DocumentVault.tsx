@@ -175,7 +175,7 @@ export function DocumentVault({
             failed: [lang === "hi" ? "विफल" : "Failed", "⚠"],
             pending: [lang === "hi" ? "अन-स्कैन्ड" : "Not scanned", "○"],
           };
-          const [label, icon] = statusLabel[d.ocr_status] ?? statusLabel.pending!;
+          const [label, icon] = statusLabel[d.ocr_status] ?? statusLabel["pending"]!;
           return (
             <li key={d.id} className="rounded-xl border border-border p-3">
               <div className="flex flex-wrap items-center gap-2">
@@ -183,7 +183,7 @@ export function DocumentVault({
                 <span className="font-semibold">{d.file_name}</span>
                 <span className="rounded-full bg-secondary px-2 py-0.5 text-xs">{d.category}</span>
                 <span
-                  className={`rounded-full px-2 py-0.5 text-xs font-medium ${statusStyles[d.ocr_status] ?? statusStyles.pending}`}
+                  className={`rounded-full px-2 py-0.5 text-xs font-medium ${statusStyles[d.ocr_status] ?? statusStyles["pending"]}`}
                 >
                   {icon} {label}
                 </span>
