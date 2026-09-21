@@ -250,6 +250,7 @@ function PatientDashboard() {
         </TabsList>
 
         <TabsContent value="overview" className="mt-5 space-y-5">
+          <WombGreeting />
           <div className="grid gap-5 lg:grid-cols-2">
             <MhidCard patient={patient} />
             <div className="space-y-5">

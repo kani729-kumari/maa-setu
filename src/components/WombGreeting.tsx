@@ -37,7 +37,7 @@ export function WombGreeting() {
       id: Date.now() + i,
       left: 18 + Math.random() * 55,
       delay: Math.random() * 0.35,
-      emoji: ["💗", "✨", "💕", "🌸"][i % 4],
+      emoji: (["💗", "✨", "💕", "🌸"] as const)[i % 4] ?? "💗",
     }));
     setHearts(burst);
     if (heartTimer.current) window.clearTimeout(heartTimer.current);
@@ -102,7 +102,10 @@ export function WombGreeting() {
           </p>
           <p key={quoteIdx} className="animate-quote-in mt-3 font-display text-2xl font-semibold leading-snug sm:text-3xl">
             <span className="brand-text">“</span>
-            {lang === "hi" ? quotes[quoteIdx].hi : quotes[quoteIdx].en}
+            {(() => {
+              const q = quotes[quoteIdx] ?? quotes[0]!;
+              return lang === "hi" ? q.hi : q.en;
+            })()}
             <span className="brand-text">”</span>
           </p>
           <p className="mt-4 text-sm text-muted-foreground">
