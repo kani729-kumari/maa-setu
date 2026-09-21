@@ -210,3 +210,73 @@
     box-shadow: var(--shadow-lift);
   }
 }
+
+/* --- Womb greeting animation --- */
+@keyframes baby-pop {
+  0% {
+    transform: scale(0.2) translateY(10px);
+    opacity: 0;
+  }
+  55% {
+    transform: scale(1.35) translateY(-20px);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(0.92) translateY(-14px);
+  }
+  100% {
+    transform: scale(1) translateY(-16px);
+    opacity: 1;
+  }
+}
+
+@keyframes womb-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.575 0.212 350 / 0.28);
+  }
+  50% {
+    box-shadow: 0 0 0 16px oklch(0.575 0.212 350 / 0);
+  }
+}
+
+@keyframes heart-float {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-80px) scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes quote-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-baby-pop {
+  animation: baby-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.womb-pulse {
+  animation: womb-pulse 2.4s ease-in-out infinite;
+}
+
+.heart-float {
+  animation: heart-float 1.7s ease-out forwards;
+}
+
+.animate-quote-in {
+  animation: quote-in 0.5s ease-out both;
+}
