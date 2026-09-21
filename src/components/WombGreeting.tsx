@@ -69,15 +69,15 @@ export function WombGreeting() {
             type="button"
             onClick={pop}
             aria-label={lang === "hi" ? "पेट को थपथपाएँ" : "Tap the belly"}
-            className="group absolute left-[42%] top-[52%] flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-primary/15 backdrop-blur-[1px] transition-transform duration-200 hover:scale-105 active:scale-95 womb-pulse"
+            className="group absolute left-[55%] top-[62%] flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-primary/15 backdrop-blur-[1px] transition-transform duration-200 hover:scale-105 active:scale-95 womb-pulse"
           >
             {popped && (
               <span
                 key={popKey}
-                className="animate-baby-pop absolute bottom-full left-1/2 -translate-x-1/2 text-4xl drop-shadow-md"
+                className="absolute left-full top-1/2 -translate-y-1/2 pl-2"
                 aria-hidden
               >
-                👶
+                <span className="animate-baby-pop block text-4xl drop-shadow-md">👶</span>
               </span>
             )}
             <span className="text-2xl" aria-hidden>
@@ -88,7 +88,7 @@ export function WombGreeting() {
             <span
               key={h.id}
               className="heart-float pointer-events-none absolute text-2xl"
-              style={{ left: `${h.left}%`, top: "38%", animationDelay: `${h.delay}s` }}
+              style={{ left: `${h.left}%`, top: "36%", animationDelay: `${h.delay}s` }}
               aria-hidden
             >
               {h.emoji}
