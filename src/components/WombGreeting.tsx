@@ -35,7 +35,7 @@ export function WombGreeting() {
     setQuoteIdx((i) => (i + 1) % quotes.length);
     const burst: Heart[] = Array.from({ length: 6 }, (_, i) => ({
       id: Date.now() + i,
-      left: 18 + Math.random() * 55,
+      left: 52 + Math.random() * 42,
       delay: Math.random() * 0.35,
       emoji: (["💗", "✨", "💕", "🌸"] as const)[i % 4] ?? "💗",
     }));
