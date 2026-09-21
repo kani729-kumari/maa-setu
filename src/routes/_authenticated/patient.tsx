@@ -274,6 +274,9 @@ function PatientDashboard() {
               </SectionCard>
             </div>
           </div>
+        </TabsContent>
+
+        <TabsContent value="timeline" className="mt-5 space-y-5">
           <div className="grid gap-4 sm:grid-cols-4">
             <StatTile label={t("records")} value={records.length} />
             <StatTile label={t("appointments")} value={(apptQ.data ?? []).length} tone="violet" />
@@ -300,9 +303,6 @@ function PatientDashboard() {
               ))}
             </ul>
           </SectionCard>
-        </TabsContent>
-
-        <TabsContent value="timeline" className="mt-5">
           <SectionCard title={t("timeline")} action={<DemoBadge />}>
             {recordsQ.isLoading ? <p>{t("loading")}</p> : <Timeline records={records} />}
           </SectionCard>
