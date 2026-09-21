@@ -9,6 +9,7 @@ import { DocumentVault } from "@/components/DocumentVault";
 import { MhidCard } from "@/components/MhidCard";
 import { RiskPanel } from "@/components/RiskPanel";
 import { Timeline } from "@/components/Timeline";
+import { WombGreeting } from "@/components/WombGreeting";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
