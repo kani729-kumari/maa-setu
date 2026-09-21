@@ -276,7 +276,33 @@ function PatientDashboard() {
           </div>
         </TabsContent>
 
-        <TabsContent value="timeline" className="mt-5">
+        <TabsContent value="timeline" className="mt-5 space-y-5">
+          <div className="grid gap-4 sm:grid-cols-4">
+            <StatTile label={t("records")} value={records.length} />
+            <StatTile label={t("appointments")} value={(apptQ.data ?? []).length} tone="violet" />
+            <StatTile
+              label={t("reminders")}
+              value={(remindersQ.data ?? []).filter((r) => !r["done"]).length}
+              tone="warning"
+            />
+            <StatTile label={t("vaccination")} value={(vaxQ.data ?? []).length} tone="success" />
+          </div>
+          <SectionCard title={t("careGaps")}>
+            <ul className="grid gap-2 sm:grid-cols-2">
+              {(gapsQ.data ?? []).map((g) => (
+                <li
+                  key={String(g["id"])}
+                  className={`flex items-center gap-2 rounded-xl border px-3 py-2 text-sm ${statusChip(String(g["status"]))}`}
+                >
+                  <span>
+                    {g["status"] === "completed" ? "✓" : g["status"] === "pending" ? "⚠" : "🚨"}
+                  </span>
+                  <span className="font-medium">{String(g["item"])}</span>
+                  <span className="ml-auto text-xs">{String(g["detail"] ?? "")}</span>
+                </li>
+              ))}
+            </ul>
+          </SectionCard>
           <SectionCard title={t("timeline")} action={<DemoBadge />}>
             {recordsQ.isLoading ? <p>{t("loading")}</p> : <Timeline records={records} />}
           </SectionCard>
