@@ -104,7 +104,7 @@ export function DocumentVault({
 
   async function openDoc(d: DocRow) {
     if (!d.file_path) {
-      toast.info(lang === "hi" ? "डेमो दस्तावेज़ — फ़ाइल संलग्न नहीं" : "Demo document — no file attached");
+      toast.info(lang === "hi" ? "दस्तावेज़ — फ़ाइल संलग्न नहीं" : "Document — no file attached");
       return;
     }
     const { data, error } = await supabase.storage

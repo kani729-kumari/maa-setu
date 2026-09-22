@@ -20,7 +20,7 @@ export const extractDocumentOcr = createServerFn({ method: "POST" })
       .eq("id", data.documentId)
       .single();
     if (error || !doc) throw new Error("Document not found");
-    if (!doc.file_path) throw new Error("This demo document has no file attached");
+    if (!doc.file_path) throw new Error("This document has no file attached");
 
     await supabaseAdmin
       .from("documents")
@@ -40,7 +40,7 @@ export const extractDocumentOcr = createServerFn({ method: "POST" })
       return finish(
         "done",
         `Prototype note: AI text extraction currently supports scanned image files (JPG/PNG). ` +
-          `"${doc.file_name}" is a PDF or other format — convert a page to an image and re-upload to try the extraction demo.`,
+          `"${doc.file_name}" is a PDF or other format — convert a page to an image and re-upload to try the extraction.`,
       );
     }
 
