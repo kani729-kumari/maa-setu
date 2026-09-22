@@ -4,7 +4,7 @@ import { AlertTriangle, ExternalLink, FileWarning, PhoneCall } from "lucide-reac
 import { useState } from "react";
 import { toast } from "sonner";
 
-import { AppShell, DemoBadge, SectionCard, StatTile } from "@/components/brand";
+import { AppShell, DemoBadge, SectionCard } from "@/components/brand";
 import { DocumentVault } from "@/components/DocumentVault";
 import { MhidCard } from "@/components/MhidCard";
 import { RiskPanel } from "@/components/RiskPanel";
@@ -279,16 +279,6 @@ function PatientDashboard() {
         </TabsContent>
 
         <TabsContent value="timeline" className="mt-5 space-y-5">
-          <div className="grid gap-4 sm:grid-cols-4">
-            <StatTile label={t("records")} value={records.length} />
-            <StatTile label={t("appointments")} value={(apptQ.data ?? []).length} tone="violet" />
-            <StatTile
-              label={t("reminders")}
-              value={(remindersQ.data ?? []).filter((r) => !r["done"]).length}
-              tone="warning"
-            />
-            <StatTile label={t("vaccination")} value={(vaxQ.data ?? []).length} tone="success" />
-          </div>
           <SectionCard title={t("careGaps")}>
             <ul className="grid gap-2 sm:grid-cols-2">
               {(gapsQ.data ?? []).map((g) => (
