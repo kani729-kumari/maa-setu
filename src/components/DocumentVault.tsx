@@ -239,6 +239,18 @@ export function DocumentVault({
                     <Download className="mr-1 h-4 w-4" />
                     {lang === "hi" ? "खोलें" : "Open"}
                   </Button>
+                  {canUpload && (
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="text-destructive hover:text-destructive"
+                      disabled={remove.isPending}
+                      onClick={() => remove.mutate(d)}
+                    >
+                      <Trash2 className="mr-1 h-4 w-4" />
+                      {lang === "hi" ? "हटाएँ" : "Delete"}
+                    </Button>
+                  )}
                 </span>
               </div>
               {openOcr === d.id && d.ocr_text && (
