@@ -102,6 +102,21 @@ export function DocumentVault({
     },
   });
 
+  const remove = useMutation({
+    mutationFn: async (d: DocRow) => {
+      if (d.file_path) {
+        await supabase.storage.from("medical-documents").remove([d.file_path]);
+      }
+      const { error } = await supabase.from("documents").delete().eq("id", d.id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      toast.success(lang === "hi" ? "दस्तावेज़ हटाया गया" : "Document removed");
+      qc.invalidateQueries({ queryKey: ["documents", patientId] });
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
+
   async function openDoc(d: DocRow) {
     if (!d.file_path) {
       toast.info(lang === "hi" ? "दस्तावेज़ — फ़ाइल संलग्न नहीं" : "Document — no file attached");
