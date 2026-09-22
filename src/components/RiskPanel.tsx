@@ -43,7 +43,10 @@ export function RiskPanel({
         Prototype score: {result.score}/100 · engine: prototype-rule-engine-v1
       </div>
 
-      <ul className="mt-4 space-y-2">
+      <h3 className="mt-4 text-sm font-bold uppercase tracking-wide text-muted-foreground">
+        {t("riskBreakdown")}
+      </h3>
+      <ul className="mt-2 space-y-2">
         {result.factors.map((f) => (
           <li
             key={f.factor}

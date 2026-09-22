@@ -64,6 +64,7 @@ const dict: Dict = {
   riskStatus: ["Risk Status", "जोखिम स्थिति"],
   riskAssessment: ["AI-Assisted Risk Assessment", "एआई-सहायित जोखिम आकलन"],
   riskLevel: ["Risk Level", "जोखिम स्तर"],
+  riskBreakdown: ["Risk Component Breakdown", "जोखिम घटक विवरण"],
   low: ["Low", "कम"],
   moderate: ["Moderate", "मध्यम"],
   high: ["High", "उच्च"],
