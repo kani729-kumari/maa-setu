@@ -375,7 +375,7 @@ function PatientDashboard() {
             <p className="mt-3 text-xs text-muted-foreground">
               {lang === "hi"
                 ? "प्रोटोटाइप में सूचनाएँ ऐप के अंदर दिखाई जाती हैं (एसएमएस नहीं)।"
-                : "In this prototype notifications are shown in-app (demo notifications, not real SMS)."}
+                : "In this prototype notifications are shown in-app (not real SMS)."}
             </p>
           </SectionCard>
           <SectionCard title={t("appointments")}>
@@ -520,8 +520,8 @@ function PatientDashboard() {
             </div>
             <p className="mt-3 text-xs text-muted-foreground">
               {lang === "hi"
-                ? "प्रोटोटाइप डेमो स्थान — बाद में वास्तविक मैप/लोकेशन एपीआई जोड़ा जा सकता है।"
-                : "Prototype demo locations — real map/location APIs can be connected later."}
+                ? "प्रोटोटाइप स्थान — बाद में वास्तविक मैप/लोकेशन एपीआई जोड़ा जा सकता है।"
+                : "Prototype locations — real map/location APIs can be connected later."}
             </p>
           </SectionCard>
           <SectionCard title={t("complaintForms")} icon={<FileWarning className="h-5 w-5 text-primary" />}>

@@ -203,12 +203,12 @@ function Landing() {
             <h2 className="text-2xl font-bold">{t("demoJourney")}</h2>
             <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
               {lang === "hi"
-                ? "सीता देवी की पूरी 9 महीने की डेमो यात्रा देखें — एमएचआईडी, रिकॉर्ड, डॉक्टर बदलना, सहमति और जोखिम आकलन।"
-                : "Walk through Sita Devi's complete 9-month demo journey — MHID, records, change of doctor, consent and risk assessment."}
+                ? "सीता देवी की पूरी 9 महीने की यात्रा देखें — एमएचआईडी, रिकॉर्ड, डॉक्टर बदलना, सहमति और जोखिम आकलन।"
+                : "Walk through Sita Devi's complete 9-month journey — MHID, records, change of doctor, consent and risk assessment."}
             </p>
             <p className="mt-2 text-xs text-muted-foreground">
               MAA Setu Community Hospital · Gautam Buddha Nagar, Uttar Pradesh · Prototype Partner
-              Hospital — Demonstration Only
+              Hospital — Illustration Only
             </p>
           </div>
           <Button asChild size="lg" className="ml-auto">
@@ -220,8 +220,8 @@ function Landing() {
       </section>
 
       <footer className="border-t border-border/70 py-8 text-center text-xs text-muted-foreground">
-        {t("brand")} · {t("tagline")} · {t("demoData")} — fictional hospitals and doctors are for
-        demonstration only and are not certified providers.
+        {t("brand")} · {t("tagline")} · {t("demoData")} — fictional hospitals and doctors shown for
+        illustration only and are not certified providers.
       </footer>
     </div>
   );
