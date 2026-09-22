@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { ChevronDown, ChevronUp, Download, FileText, ScanText, Upload } from "lucide-react";
+import { ChevronDown, ChevronUp, Download, FileText, ScanText, Trash2, Upload } from "lucide-react";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 
@@ -100,6 +100,21 @@ export function DocumentVault({
       toast.error(e.message);
       qc.invalidateQueries({ queryKey: ["documents", patientId] });
     },
+  });
+
+  const remove = useMutation({
+    mutationFn: async (d: DocRow) => {
+      if (d.file_path) {
+        await supabase.storage.from("medical-documents").remove([d.file_path]);
+      }
+      const { error } = await supabase.from("documents").delete().eq("id", d.id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      toast.success(lang === "hi" ? "दस्तावेज़ हटाया गया" : "Document removed");
+      qc.invalidateQueries({ queryKey: ["documents", patientId] });
+    },
+    onError: (e: Error) => toast.error(e.message),
   });
 
   async function openDoc(d: DocRow) {
@@ -224,6 +239,18 @@ export function DocumentVault({
                     <Download className="mr-1 h-4 w-4" />
                     {lang === "hi" ? "खोलें" : "Open"}
                   </Button>
+                  {canUpload && (
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="text-destructive hover:text-destructive"
+                      disabled={remove.isPending}
+                      onClick={() => remove.mutate(d)}
+                    >
+                      <Trash2 className="mr-1 h-4 w-4" />
+                      {lang === "hi" ? "हटाएँ" : "Delete"}
+                    </Button>
+                  )}
                 </span>
               </div>
               {openOcr === d.id && d.ocr_text && (
