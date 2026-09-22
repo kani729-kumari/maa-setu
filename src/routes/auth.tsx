@@ -19,10 +19,10 @@ export const Route = createFileRoute("/auth")({
       {
         name: "description",
         content:
-          "Sign in to the MAA Setu prototype as a pregnant woman, doctor or hospital admin using the demo credentials.",
+          "Sign in to the MAA Setu prototype as a pregnant woman, doctor or hospital admin using the sample credentials.",
       },
       { property: "og:title", content: "Login — MAA Setu" },
-      { property: "og:description", content: "Demo logins for the MAA Setu maternal health prototype." },
+      { property: "og:description", content: "Sample logins for the MAA Setu maternal health prototype." },
     ],
   }),
   component: AuthPage,
@@ -30,8 +30,8 @@ export const Route = createFileRoute("/auth")({
 
 const demoAccounts = [
   { email: "patient@maasetu.demo", roleKey: "patient", name: "Sita Devi · MHID UP-GB-2026-00001" },
-  { email: "doctor1@maasetu.demo", roleKey: "doctor", name: "Dr. Ananya Sharma (Demo Doctor 1)" },
-  { email: "doctor2@maasetu.demo", roleKey: "doctor", name: "Dr. Neha Verma (Demo Doctor 2)" },
+  { email: "doctor1@maasetu.demo", roleKey: "doctor", name: "Dr. Ananya Sharma (Doctor 1)" },
+  { email: "doctor2@maasetu.demo", roleKey: "doctor", name: "Dr. Neha Verma (Doctor 2)" },
   { email: "admin@maasetu.demo", roleKey: "admin", name: "MAA Setu Hospital Admin" },
 ];
 
@@ -129,7 +129,7 @@ function AuthPage() {
             <DemoBadge label={t("demoMode")} />
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
-            Password for every demo account: <span className="font-mono font-semibold">{DEMO_PASSWORD}</span>
+            Password for every account: <span className="font-mono font-semibold">{DEMO_PASSWORD}</span>
           </p>
           <div className="mt-4 space-y-3">
             {demoAccounts.map((a) => (
@@ -155,7 +155,7 @@ function AuthPage() {
             ))}
           </div>
           <p className="mt-4 text-xs text-muted-foreground">
-            These are clearly labelled DEMO credentials for prototype evaluation. Hospitals and
+            These are sample credentials for prototype evaluation. Hospitals and
             doctors in this prototype are fictional and not certified providers.
           </p>
         </div>

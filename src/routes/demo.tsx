@@ -7,16 +7,16 @@ import { useI18n } from "@/lib/i18n";
 export const Route = createFileRoute("/demo")({
   head: () => ({
     meta: [
-      { title: "Guided demo journey — MAA Setu prototype walkthrough" },
+      { title: "Guided journey — MAA Setu prototype walkthrough" },
       {
         name: "description",
         content:
           "Step-by-step walkthrough of the MAA Setu prototype: register a mother, generate her MHID, request consent and follow her verified pregnancy record across hospitals.",
       },
-      { property: "og:title", content: "Demo journey — MAA Setu" },
+      { property: "og:title", content: "Guided journey — MAA Setu" },
       {
         property: "og:description",
-        content: "Try every MAA Setu role in five minutes with seeded demo data.",
+        content: "Try every MAA Setu role in five minutes with seeded sample data.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -89,8 +89,8 @@ function DemoJourney() {
         <SectionCard title={t("demoCreds")}>
           <p className="mb-3 text-sm text-muted-foreground">
             {lang === "hi"
-              ? "सभी डेमो खातों का पासवर्ड: maasetu123"
-              : "Password for every demo account: maasetu123"}
+              ? "सभी खातों का पासवर्ड: maasetu123"
+              : "Password for every account: maasetu123"}
           </p>
           <ul className="space-y-2">
             {accounts.map((a) => (
